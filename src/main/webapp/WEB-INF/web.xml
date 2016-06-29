@@ -1,0 +1,76 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+    <display-name>Archetype Created Web Application</display-name>
+
+    <context-param>
+        <param-name>resteasy.scan</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>resteasy.servlet.mapping.prefix</param-name>
+        <param-value>/rest</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>fb_app_id</param-name>
+        <param-value>FB_APP_ID</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>fb_app_secret</param-name>
+        <param-value>FB_APP_SECRET</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>redirect_uri</param-name>
+        <param-value>http://SERVER_URI/fb_oauth_login/rest/callback</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+
+    <servlet>
+        <servlet-name>resteasy-servlet</servlet-name>
+        <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>service.FirstClass</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>resteasy-servlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>fbAuthorize</servlet-name>
+        <servlet-class>service.AuthorizeServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><servlet-name>fbAuthorize</servlet-name>
+        <url-pattern>/fbAuth</url-pattern>
+    </servlet-mapping>
+
+
+
+</web-app>
