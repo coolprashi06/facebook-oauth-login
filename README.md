@@ -7,7 +7,7 @@ Application demonstrating use of OAuth 2.0 spec to pull the user details from Fa
 ### Create Facebook app
 
 - go to https://developers.facebook.com/apps/
-- Click on "Add a new app" which opens up a window and asks you the type of application which will consume the data from Facebook.
+- Click on **Add a new app** which opens up a window and asks you the type of application which will consume the data from Facebook.
 - for this case you need to select Website
 - in next screen choose Display name of app, contact email and category of your web application.
 - Next page takes you to the dashboard of your newly created application with details like App ID, App Secret
